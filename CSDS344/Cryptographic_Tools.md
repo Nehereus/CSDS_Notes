@@ -32,7 +32,7 @@ protect Integrity, but not authenticity.
 - can be applied to a string of any size
 - output must be a fixed length string
 - H(x) should be easy to be computed for any given x
-- **One-way or pre-image resistant** make  H^-1^(H(x)) =x infeasible
+- **One-way or pre-image resistant** make  $H^{-1}(H(x))$ =x infeasible
 - **Strong/Weak collision resistance** make it is infeasible to find a y, such that F(x) == F(y), where x!=y
 - it is hard to find any pair of x and y such that h(x)==h(y), which is strong collison resistance. While weak resistance only requires for a certain x, no y can be found.
 
