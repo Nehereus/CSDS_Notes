@@ -50,7 +50,7 @@ function main()
 ```
 ![](../img/2022-10-04-22-18-04.png)
 ## state transitions
-![](../IMG/2022-10-05-00-17-46.png)
+![](../img/2022-10-05-00-17-46.png)
 - transformation procedures
 
 ## Primitive Operations
