@@ -50,9 +50,14 @@ function main()
     sys_del_file(tmp_file)
 ```
 ![](../img/2022-10-04-22-18-04.png)
+<<<<<<< HEAD
 ## Protection State Transitions via Access Control Matrix (ACM)
 ### state transitions
 ![](../IMG/2022-10-05-00-17-46.png)
+=======
+## state transitions
+![](../img/2022-10-05-00-17-46.png)
+>>>>>>> 4fc14a01a75e6bb284b697e911bc0a82ca91ce02
 - transformation procedures
 
 ### Primitive Operations
