@@ -126,7 +126,7 @@ particular user
 - each user has a number of tickets and may be 
 authorized to loan or give them to others 
 ### an example
-![](2022-10-05-19-41-16.png)
+![](../img/2022-10-05-19-41-16.png)
 
 ### ACL vs DAC
 Capability Lists is less safer than ACL.
@@ -135,7 +135,7 @@ Capability Lists is less safer than ACL.
   
 ### Authorization Tables
 - One row for one access right of one subject to one resource
-![](2022-10-05-23-24-42.png)
+![](../img/2022-10-05-23-24-42.png)
 
 ## Mandatory Access Control
 More restrictive than DAC
@@ -148,17 +148,17 @@ More restrictive than DAC
 ## RBAC
 - User to roles
 - Roles to resource
-![](2022-10-05-23-29-03.png)
+![](../img/2022-10-05-23-29-03.png)
 
 ### A Family of RBAC Models
-![](2022-10-05-23-31-40.png)
+![](../img/2022-10-05-23-31-40.png)
 -  RBAC_0 - minimal functionality for RBAC system 
 - RBAC_1 includes RBAC and role hierarchies (enables one role to inherit 10 permissions form another role)
 - RBAC_2 includes 𝑅𝐵𝐴𝐶 plus constraints that restrict configuration of the system
 - RBAC_3 includes both hierarchies and constraints
 
 ### RBAC_1
-![](2022-10-05-23-33-56.png)
+![](../img/2022-10-05-23-33-56.png)
 
 ### RBAC_2
 - Provide a means of adapting RBAC to the specifics of administrative and security policies of an organization
@@ -195,17 +195,17 @@ More restrictive than DAC
   - e.g., current date/time, current virus/hacker activities, might be relevant in applying an access control policy
 
 ### an example
-![](2022-10-05-23-41-57.png)
+![](../img/2022-10-05-23-41-57.png)
 
 ### policy
 - A policy is a set of rules and relationships that govern allowable behavior within an organization, based on the privileges of subjects and how resources or objects are to be protected under which environment conditions
 - Privileges represent the authorized behavior of a subject and are defined by an authority and embodied in a policy
 
 #### more on policy
-![](2022-10-05-23-45-31.png)
-![](2022-10-05-23-46-27.png)
+![](../img/2022-10-05-23-45-31.png)
+![](../img/2022-10-05-23-46-27.png)
 
 #### an example
-![](2022-10-05-23-46-50.png)
-![](2022-10-05-23-46-59.png)
+![](../img/2022-10-05-23-46-50.png)
+![](../img/2022-10-05-23-46-59.png)
 
