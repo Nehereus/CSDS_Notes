@@ -1,0 +1,150 @@
+<textarea id='before' style='height:20%; width:75%; font-family:courier; font-size:10pt;color:white;background-color:black;' readonly>This is a nice day to vi</textarea>
+<br>
+<input id='left' style='height:5%; width:10pt; font-family:courier; font-size:10pt' readonly>
+<input id='middle' style='height:5%; width:20pt; font-family:courier; font-size:10pt' readonly>
+<input id='right' style='height:5%; width:20pt; font-family:courier; font-size:10pt' readonly>
+<font style='font-size:8pt'>COL=</font><input id='currcol' style='height:5%; width:20pt; font-family:courier; font-size:8pt' readonly>
+<input id='insertbutton' type='submit' style='visibility:hidden; background-color:ccffcc' value='INSERT' readonly>
+<hr>
+<textarea id='hist' style='height:5%;width:75%; font-family:courier'>
+    COMMANDS: 
+    </textarea>
+
+<script>
+    /*
+        function added:
+        1. change the background color for the input field as long as the color of the text;
+        2. add selecting cursor in normal mode;
+        3. x will remove the char under the cursor;
+        4. D will remove everything after cursor;
+        5. o will start a new line, move the cursor to that position and enter insert mode;
+        */
+    // init
+    insertmode = 0;
+    where = 5;
+    left.value = 'foot';
+    middle.value = ' ';
+    right.value = 'hand';
+    sizecurrent();
+    var charPerLine = [];
+
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        hme(evt.keyCode); // handy debug field
+
+
+        if (evt.keyCode == 27) {
+            hme("ESC");
+            insertmode = 0;
+            insertbutton.style.visibility = "hidden";
+            before.readOnly = true;
+            left.style.backgroundColor = "";
+            middle.style.backgroundColor = "";
+            right.style.backgroundColor = "";
+            return;
+        } // ESC leave insert mode
+​
+        if (insertmode) {
+            inserted = 0;
+​
+            if (evt.keyCode >= 65 && evt.keyCode <= 90) {
+                if (evt.shiftKey) middle.value = String.fromCharCode(evt.keyCode);
+                else middle.value = String.fromCharCode(evt.keyCode + 32);
+                inserted = 1;
+            } else if (evt.keyCode >= 32 && evt.keyCode <= 126) {
+                middle.value = String.fromCharCode(evt.keyCode); // only printable ascii
+                inserted = 1;
+            }
+            if (inserted) {
+                where++;
+                left.value += middle.value;
+                sizecurrent();
+            }
+            return;
+        }
+​
+        if (evt.keyCode == 72) {
+            where--;
+            right.value = middle.value + right.value;
+            lvl = left.value.length;
+            middle.value = left.value.substr(lvl - 1, 1);
+            left.value = left.value.substr(0, lvl - 1);
+            hme("h");
+        } // h go left
+​
+        if (evt.keyCode == 73) {
+            hme("i");
+            let temp = before.value;
+            before.readOnly = false;
+            insertmode = 1;
+            insertbutton.style.visibility = "visible";
+            middle.style.backgroundColor = 'ccffcc';
+            left.style.backgroundColor = 'eeffee';
+            right.style.backgroundColor = 'eeffee';
+        } // i insert
+​
+        if (evt.keyCode == 76) {
+            where++;
+            left.value += middle.value;
+            middle.value = right.value.substr(0, 1);
+            right.value = right.value.substr(1);
+            hme("l")
+        } // l go right
+​
+        if (evt.shiftKey && evt.keyCode == 68) {
+            where;
+            before.value = before.value.slice(0, before.selectionEnd);
+            lvl = left.value.length;
+            middle.value = left.value.substr(lvl - 1, 1);
+            left.value = left.value.substr(0, lvl - 1);
+            right.value = "";
+            hme("D");
+        } // D delete to end of line
+​
+        if (evt.keyCode == 79) {
+            before.value += "\n";
+            where = before.value.length;
+            before.focus();
+            before.setSelectionRange(where, where);
+            insertmode = 1;
+            before.readOnly = false;
+            hme("o")
+        } // l go right
+​
+        if (evt.keyCode == 88) {
+            before.value = before.value.slice(0, before.selectionStart) + before.value.slice(before.selectionEnd);
+            console.log("fucl");
+        }
+​
+​
+        before.setSelectionRange(where, where + 1);
+        sizecurrent()
+    };
+​
+    function normalMode() {
+​
+    }
+​
+    function sizecurrent() {
+        currtext = left.value + middle.value + right.value;
+        left.style.width = 8 * where + 'pt';
+        currcol.value = where;
+        right.style.width = 5 + 8 * (35 - where) + 'pt';
+    }
+​
+    function hme(c) {
+        hist.value = hist.value + ";" + c;
+    }
+</script>
+​
+<style>
+     ::-moz-selection {
+        color: black;
+        background-color: white;
+    }
+    
+     ::selection {
+        color: black;
+        background-color: white;
+    }
+</style>
